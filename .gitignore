@@ -1,0 +1,34 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+checkpoints/
+tests/
+app_backup.py
+app_before_*.py
+app_*.py
+add_*.py
+fix_*.py
+update_*.py
+rename_*.py
+standardize_services.py
+upgrade_metadata.py
+compact_resposta.py
+remove_*.py
+reduce_*.py
+replace_*.py
+set_*.py
+apply_*.py
+day1_*.py
+test_openai.py
+
+# Development data backups
+data/*backup*.json
+data/*before*.json
+data/*stage*.json
+data/*fixed*.json
+templates/index_before_*.html
+
+# Additional development files
+data/governement_service_before_stage52b.jason
+data/government_services_batch1.json
