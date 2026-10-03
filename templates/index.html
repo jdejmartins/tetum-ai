@@ -217,7 +217,7 @@ main {
             <div class="info"><h3>Tempu Prosesamentu</h3><div id="processing_time"></div></div>
             <div class="info"><h3>Verifikasaun Dadus</h3><div id="last_verified"></div></div>
         </div>
-        <div class="source"><strong>Fonte:</strong> <span id="source"></span><span id="sourceLink"></span></div>
+        <div class="source"><strong>Referénsia:</strong> <span id="source"></span></div>
     </section>
 </main>
 
@@ -342,8 +342,12 @@ async function askQuestion() {
         document.getElementById('fee').innerHTML=renderValue(data.fee);
         document.getElementById('processing_time').innerHTML=renderValue(data.processing_time);
         document.getElementById('last_verified').innerHTML=renderValue(data.last_verified);
-        document.getElementById('source').textContent=data.source || 'Baze-dadus TETUM-AI';
-        document.getElementById('sourceLink').innerHTML=data.source_url ? ' — <a href="'+encodeURI(data.source_url)+'" target="_blank" rel="noopener noreferrer">Fonte ofisiál ↗</a>' : '';
+        const sourceEl=document.getElementById('source');
+        if(data.source_url){
+            sourceEl.innerHTML='<a href="'+encodeURI(data.source_url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(data.source || 'Baze-dadus TETUM-AI')+' ↗</a>';
+        } else {
+            sourceEl.textContent=data.source || 'Baze-dadus TETUM-AI';
+        }
         result.style.display='block';
     } catch(e) {
         result.style.display='block'; result.innerHTML='<div class="error"><strong>Problema:</strong> '+escapeHtml(e.message)+'</div>';
